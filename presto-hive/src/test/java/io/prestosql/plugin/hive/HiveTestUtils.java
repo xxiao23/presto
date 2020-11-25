@@ -29,6 +29,8 @@ import io.prestosql.plugin.hive.orc.OrcFileWriterFactory;
 import io.prestosql.plugin.hive.orc.OrcPageSourceFactory;
 import io.prestosql.plugin.hive.orc.OrcReaderConfig;
 import io.prestosql.plugin.hive.orc.OrcWriterConfig;
+import io.prestosql.plugin.hive.oss.HiveOssConfig;
+import io.prestosql.plugin.hive.oss.PrestoOssConfigurationInitializer;
 import io.prestosql.plugin.hive.parquet.ParquetPageSourceFactory;
 import io.prestosql.plugin.hive.parquet.ParquetReaderConfig;
 import io.prestosql.plugin.hive.parquet.ParquetWriterConfig;
@@ -190,7 +192,8 @@ public final class HiveTestUtils
                         ImmutableSet.of(
                                 new PrestoS3ConfigurationInitializer(new HiveS3Config()),
                                 new GoogleGcsConfigurationInitializer(new HiveGcsConfig()),
-                                new PrestoAzureConfigurationInitializer(new HiveAzureConfig()))),
+                                new PrestoAzureConfigurationInitializer(new HiveAzureConfig()),
+                                new PrestoOssConfigurationInitializer(new HiveOssConfig()))),
                 ImmutableSet.of());
         return new HdfsEnvironment(hdfsConfig, new HdfsConfig(), new NoHdfsAuthentication());
     }

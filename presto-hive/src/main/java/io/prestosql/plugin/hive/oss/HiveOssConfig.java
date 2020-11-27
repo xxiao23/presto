@@ -18,31 +18,41 @@ import io.airlift.configuration.ConfigSecuritySensitive;
 
 public class HiveOssConfig
 {
-    private String ossAccessKey;
-    private String ossSecretKey;
+    private String aliyunAccessKeyId;
+    private String aliyunAccessKeySecret;
+    private String ossEndpoint;
 
-    public String getOssAccessKey()
+    public String getAliyunAccessKeyId()
     {
-        return ossAccessKey;
+        return aliyunAccessKeyId;
     }
 
-    @Config("hive.oss.access-key")
-    public HiveOssConfig setOssAccessKey(String ossAccessKey)
+    @Config("hive.oss.aliyun-access-key")
+    public HiveOssConfig setAliyunAccessKeyId(String aliyunAccessKeyId)
     {
-        this.ossAccessKey = ossAccessKey;
+        this.aliyunAccessKeyId = aliyunAccessKeyId;
         return this;
     }
 
-    public String getOssSecretKey()
+    public String getAliyunAccessKeySecret()
     {
-        return ossSecretKey;
+        return aliyunAccessKeySecret;
     }
 
-    @Config("hive.oss.secret-key")
+    @Config("hive.oss.aliyun-secret-key")
     @ConfigSecuritySensitive
-    public HiveOssConfig setOssSecretKey(String ossSecretKey)
+    public HiveOssConfig setAliyunAccessKeySecret(String aliyunAccessKeySecret)
     {
-        this.ossSecretKey = ossSecretKey;
+        this.aliyunAccessKeySecret = aliyunAccessKeySecret;
         return this;
+    }
+
+    public String getOssEndpoint() {
+        return ossEndpoint;
+    }
+
+    @Config("hive.oss.endpoint")
+    public void setOssEndpoint(String ossEndpoint) {
+        this.ossEndpoint = ossEndpoint;
     }
 }

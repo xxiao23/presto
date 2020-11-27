@@ -19,17 +19,40 @@ import org.apache.hadoop.fs.aliyun.oss.AliyunOSSFileSystem;
 
 import javax.inject.Inject;
 
+import static org.apache.hadoop.fs.aliyun.oss.Constants.ACCESS_KEY_ID;
+import static org.apache.hadoop.fs.aliyun.oss.Constants.ACCESS_KEY_SECRET;
+import static org.apache.hadoop.fs.aliyun.oss.Constants.ENDPOINT_KEY;
+
 public class PrestoOssConfigurationInitializer
         implements ConfigurationInitializer
 {
+    private final String aliyunAccessKeyId;
+    private final String aliyunSecretKey;
+    private final String ossEndpoint;
+
     @Inject
     public PrestoOssConfigurationInitializer(HiveOssConfig config)
     {
+        this.aliyunAccessKeyId = config.getAliyunAccessKeyId();
+        this.aliyunSecretKey = config.getAliyunAccessKeySecret();
+        this.ossEndpoint = config.getOssEndpoint();
     }
 
     @Override
     public void initializeConfiguration(Configuration config)
     {
         config.set("fs.oss.impl", AliyunOSSFileSystem.class.getName());
+
+        if (aliyunAccessKeyId != null) {
+            config.set(ACCESS_KEY_ID, aliyunAccessKeyId);
+        }
+
+        if (aliyunSecretKey != null) {
+            config.set(ACCESS_KEY_SECRET, aliyunSecretKey);
+        }
+
+        if (ossEndpoint != null) {
+            config.set(ENDPOINT_KEY, ossEndpoint);
+        }
     }
 }

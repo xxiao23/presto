@@ -47,12 +47,14 @@ public class HiveOssConfig
         return this;
     }
 
-    public String getOssEndpoint() {
+    public String getOssEndpoint()
+    {
         return ossEndpoint;
     }
 
     @Config("hive.oss.endpoint")
-    public void setOssEndpoint(String ossEndpoint) {
+    public void setOssEndpoint(String ossEndpoint)
+    {
         this.ossEndpoint = ossEndpoint;
     }
 }

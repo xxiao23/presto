@@ -45,6 +45,7 @@
         <dependency>
             <groupId>io.prestosql.hadoop</groupId>
             <artifactId>hadoop-apache</artifactId>
+            <version>3.2.0-10-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -222,12 +223,6 @@
         <dependency>
             <groupId>org.alluxio</groupId>
             <artifactId>alluxio-shaded-client</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-aliyun</artifactId>
-            <version>3.3.0</version>
         </dependency>
 
         <dependency>
